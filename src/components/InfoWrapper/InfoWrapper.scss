@@ -1,0 +1,21 @@
+@import '../../sass/mixins.scss';
+@import '../../sass/vars.scss';
+
+.InfoWrapper {
+  background-color: $black;
+  border-radius: 10px;
+  left: 2em;
+  top: 2em;
+  padding: 2em;
+  position: absolute;
+  width: 300px;
+}
+
+.InfoWrapper-desc {
+  margin-top: 1em;
+  text-align: justify;
+  text-justify: inter-word;
+  &.is-invisible {
+    @include invisible;
+  }
+}
