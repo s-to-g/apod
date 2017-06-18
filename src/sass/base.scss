@@ -20,6 +20,13 @@
 @import 'node_modules/reset-css/_reset.scss';
 @import './vars.scss';
 
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
 body {
   background-color: $black;
   color: $white;

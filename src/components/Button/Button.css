@@ -4,9 +4,11 @@
   color: inherit;
   display: inline-block;
   padding: 1em 2em;
-  position: absolute;
-  left: 50%;
-  top: 2em;
-  transform: translateX(-50%);
+  margin-left: auto;
   text-decoration: none;
-  transition: all 0.2s linear; }
+  text-align: center;
+  transition: all 0.2s linear;
+  width: 100%; }
+  @media (min-width: 500px) {
+    .Button {
+      width: initial; } }

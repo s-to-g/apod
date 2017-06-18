@@ -1,4 +1,5 @@
 @import '../../sass/vars.scss';
+@import '../../sass/mixins.scss';
 
 .Button {
   background-color: $grey;
@@ -6,10 +7,12 @@
   color: inherit;
   display: inline-block;
   padding: 1em 2em;
-  position: absolute;
-  left: 50%;
-  top: 2em;
-  transform: translateX(-50%);
+  margin-left: auto;
   text-decoration: none;
+  text-align: center;
   transition: all 0.2s linear;
+  width: 100%;
+  @include breakpoint(small) {
+    width: initial;
+  }
 }

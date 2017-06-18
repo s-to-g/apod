@@ -1,7 +1,12 @@
+@import '../../sass/mixins.scss';
 .AstronomyPicSection {
   background: no-repeat center center fixed;
   background-size: cover;
-  height: 100vh;
+  min-height: 100vh;
   width: 100%;
-  overflow: hidden;
+  padding: 2em;
+  @include breakpoint(small) {
+    display: flex;
+    align-items: flex-start;
+  }
 }

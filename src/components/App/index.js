@@ -1,6 +1,6 @@
 import React from 'react';
+import {getRandomDate} from '../../utils/utils';
 import AstronomyPic from '../AstronomyPic';
-import InfoWrapper from '../InfoWrapper';
 import Loader from '../Loader';
 import './App.css';
 import {
@@ -16,40 +16,70 @@ class App extends React.Component {
     this.state = {
       isLoading: false,
       result: null,
+      bgImg: '',
       date: DEFAULT_DATE
     };
     this.fetchAstronomicalPic = this.fetchAstronomicalPic.bind(this);
-    this.setAstronomicalPic = this.setAstronomicalPic.bind(this);
-    this._getRandomDate = this._getRandomDate.bind(this);
+    this.initAstronomicalResult = this.initAstronomicalResult.bind(this);
+    this.setAstronomicalResult = this.setAstronomicalResult.bind(this);
+    this._setRandomDate = this._setRandomDate.bind(this);
     this.buttonClicked = this.buttonClicked.bind(this);
+    this.loadImage = this.loadImage.bind(this);
   }
 
-  _getRandomDate() {
-    let date = Date.now();
-    return date;
+  loadImage(result) {
+    let image = new Image();
+    const that = this;
+    image.onload = function(){
+      const bgImage = image.src;
+      that.setAstronomicalResult(result, bgImage);
+    };
+    image.src = result.url;
   }
 
-  buttonClicked(e) {
-    e.preventDefault();
-    this.setState({date: "2016-02-03"}, () => this.fetchAstronomicalPic(this.state.date));
-    let date = this._getRandomDate(this.state.date);
-  }
-
-  setAstronomicalPic(result) {
-    console.log(result);
+  setAstronomicalResult(result, image) {
     this.setState({
-      result: result,
+      result:result,
+      bgImg: image,
       isLoading: false
     });
   }
 
+  _setRandomDate() {
+    const randomDate = getRandomDate();
+    this.setState({date: randomDate}, () => this.fetchAstronomicalPic(this.state.date));
+  }
+
+  buttonClicked(e) {
+    e.preventDefault();
+    this._setRandomDate();
+  }
+
+  initAstronomicalResult(result) {
+    if(result.media_type === "video") {
+      this._setRandomDate();
+    } else {
+      this.loadImage(result);
+      // this.setState({
+      //   result:result
+      // });
+    }
+  }
+
   fetchAstronomicalPic(date = this.state.date) {
-    console.log(date);
     this.setState({ isLoading: true });
     fetch(`${PATH_BASE}?${PARAM_KEY}&${PARAM_DATE}${date}`)
-      .then(response => response.json())
-      .then(result => this.setAstronomicalPic(result));
+      .then(result => {
+        // HANDLE BAD HTTP REQUEST
+        if(!result.ok) {
+          this._setRandomDate();
+        }
+        return result.json();
+      })
+      .then(result => this.initAstronomicalResult(result))
       // HANDLE NETWORK ERROR
+      .catch(error => console.log("error"));
+      // WHAT SHOULD HAPPEN PN NETWORK ERROR
   }
 
   componentDidMount() {
@@ -57,12 +87,11 @@ class App extends React.Component {
   }
 
   render() {
-    const { result, isLoading } = this.state;
+    const { result, isLoading, bgImg } = this.state;
     if (!result) { return null; }
     return (
       <div>
-        <AstronomyPic result={result} onClick={this.buttonClicked}/>
-        <InfoWrapper result={result} />
+        <AstronomyPic result={result} onClick={this.buttonClicked} bgImg={bgImg}/>
         { isLoading && <Loader />}
       </div>
     );

@@ -4,18 +4,53 @@
 .InfoWrapper {
   background-color: $black;
   border-radius: 10px;
-  left: 2em;
-  top: 2em;
+  margin: 0 0 2em;
   padding: 2em;
-  position: absolute;
-  width: 300px;
+  position: relative;
+  width: 100%;
+  @include breakpoint(small) {
+    max-width: 300px;
+    width: initial;
+  };
+}
+
+.InfoWrapper-descWrapper {
+  max-height: 1000px;
+  opacity: 1;
+  transition: all 0.5s linear;
+  overflow: hidden;
+  &.is-invisible {
+    opacity: 0;
+    max-height: 0;
+  }
 }
 
 .InfoWrapper-desc {
   margin-top: 1em;
-  text-align: justify;
-  text-justify: inter-word;
-  &.is-invisible {
-    @include invisible;
+}
+
+.InfoWrapper-title {
+  position: relative;
+}
+
+.InfoWrapper-icon {
+  right: 1em;
+  bottom: 0.5em;
+  padding: 4px 6px;
+  position: absolute;
+}
+
+.InfoWrapper-icon--arrow {
+  transition: transform $transition-duration ease-in;
+  &.is-toggled {
+    bottom: 0.7em;
+    transform: rotate(180deg);
+  }
+}
+
+.InfoWrapper-icon--underline {
+  transition: bottom $transition-duration ease-in;
+  &.is-toggled {
+    bottom: 0.35em;
   }
 }
