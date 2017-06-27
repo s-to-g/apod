@@ -22,7 +22,7 @@ class App extends React.Component {
     this.fetchAstronomicalPic = this.fetchAstronomicalPic.bind(this);
     this.initAstronomicalResult = this.initAstronomicalResult.bind(this);
     this.setAstronomicalResult = this.setAstronomicalResult.bind(this);
-    this._setRandomDate = this._setRandomDate.bind(this);
+    this.setRandomDate = this.setRandomDate.bind(this);
     this.buttonClicked = this.buttonClicked.bind(this);
     this.loadImage = this.loadImage.bind(this);
   }
@@ -37,6 +37,16 @@ class App extends React.Component {
     image.src = result.url;
   }
 
+  setRandomDate() {
+    const randomDate = getRandomDate();
+    this.setState({date: randomDate}, () => this.fetchAstronomicalPic(this.state.date));
+  }
+
+  buttonClicked(e) {
+    e.preventDefault();
+    this.setRandomDate();
+  }
+
   setAstronomicalResult(result, image) {
     this.setState({
       result:result,
@@ -45,24 +55,13 @@ class App extends React.Component {
     });
   }
 
-  _setRandomDate() {
-    const randomDate = getRandomDate();
-    this.setState({date: randomDate}, () => this.fetchAstronomicalPic(this.state.date));
-  }
-
-  buttonClicked(e) {
-    e.preventDefault();
-    this._setRandomDate();
-  }
-
   initAstronomicalResult(result) {
     if(result.media_type === "video") {
-      this._setRandomDate();
+      this.setRandomDate();
     } else {
+      this.setState({bgImg: ''});
+
       this.loadImage(result);
-      // this.setState({
-      //   result:result
-      // });
     }
   }
 
@@ -70,16 +69,16 @@ class App extends React.Component {
     this.setState({ isLoading: true });
     fetch(`${PATH_BASE}?${PARAM_KEY}&${PARAM_DATE}${date}`)
       .then(result => {
-        // HANDLE BAD HTTP REQUEST
+        // handle bad http request
         if(!result.ok) {
-          this._setRandomDate();
+          this.setRandomDate();
         }
         return result.json();
       })
       .then(result => this.initAstronomicalResult(result))
-      // HANDLE NETWORK ERROR
+      // handle network error
       .catch(error => console.log("error"));
-      // WHAT SHOULD HAPPEN PN NETWORK ERROR
+      // WHAT SHOULD HAPPEN ON NETWORK ERROR???????????????
   }
 
   componentDidMount() {
@@ -91,7 +90,11 @@ class App extends React.Component {
     if (!result) { return null; }
     return (
       <div>
-        <AstronomyPic result={result} onClick={this.buttonClicked} bgImg={bgImg}/>
+        <AstronomyPic
+          result={result}
+          onClick={this.buttonClicked}
+          bgImg={bgImg}
+        />
         { isLoading && <Loader />}
       </div>
     );

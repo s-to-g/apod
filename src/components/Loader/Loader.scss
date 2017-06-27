@@ -1,7 +1,6 @@
 $animationDuration: 1.2s;
 $delay: 0.4s;
 $loaderBlockCount: 5;
-$turquoise: #1abc9c;
 
 @keyframes pulse {
   0%, 40%, 100%   {
@@ -27,7 +26,7 @@ $turquoise: #1abc9c;
 
 .loader__block {
   flex-basis: 14%;
-  background-color: $turquoise;
+  background-color: $turc;
   animation: pulse $animationDuration infinite ease-in-out;
 
   @for $i from 1 through $loaderBlockCount {

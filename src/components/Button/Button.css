@@ -1,14 +1,20 @@
 .Button {
-  background-color: #333333;
+  background-color: #00E8FF;
   border-radius: 4px;
   color: inherit;
   display: inline-block;
   padding: 1em 2em;
   margin-left: auto;
+  letter-spacing: 0.7px;
+  opacity: 0.8;
   text-decoration: none;
   text-align: center;
+  text-transform: uppercase;
   transition: all 0.2s linear;
   width: 100%; }
-  @media (min-width: 500px) {
-    .Button {
-      width: initial; } }
+
+@media (min-width: 570px) {
+  .Button {
+    width: initial; }
+  .Button:hover {
+    background-color: #00c3d6; } }

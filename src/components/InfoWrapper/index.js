@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Icon from '../Icon';
 import './InfoWrapper.css';
 
@@ -17,6 +18,10 @@ class InfoWrapper extends React.Component {
     this.setState({
       isToggled: !isToggled
     });
+  }
+
+  componentWillReceiveProps(nextProps) {
+      this.setState({isToggled:false});
   }
 
   render() {
@@ -39,4 +44,11 @@ class InfoWrapper extends React.Component {
     );
   }
 }
+
+InfoWrapper.propTypes = {
+  result: PropTypes.object.isRequired,
+  bgImg: PropTypes.string.isRequired
+}
+
+
 export default InfoWrapper;

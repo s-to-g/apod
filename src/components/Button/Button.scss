@@ -2,17 +2,23 @@
 @import '../../sass/mixins.scss';
 
 .Button {
-  background-color: $grey;
+  background-color: $turc;
   border-radius: 4px;
   color: inherit;
   display: inline-block;
   padding: 1em 2em;
   margin-left: auto;
+  letter-spacing: 0.7px;
+  opacity: 0.8;
   text-decoration: none;
   text-align: center;
+  text-transform: uppercase;
   transition: all 0.2s linear;
   width: 100%;
   @include breakpoint(small) {
     width: initial;
+    &:hover {
+      background-color: $turc-darker;
+    }
   }
 }

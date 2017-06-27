@@ -17,7 +17,7 @@
 ///////////////////////////////////////////////
 
 $breakpoints: (
-  small: 500px
+  small: 570px
 );
 
 @mixin breakpoint($breakpoint, $map: $breakpoints) {

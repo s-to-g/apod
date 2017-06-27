@@ -1,23 +1,26 @@
 .InfoWrapper {
   background-color: #000000;
-  border-radius: 10px;
+  border-radius: 4px;
   margin: 0 0 2em;
-  padding: 2em;
+  padding: 1em 2em;
   position: relative;
+  opacity: 0.8;
   width: 100%; }
-  @media (min-width: 500px) {
-    .InfoWrapper {
-      max-width: 300px;
-      width: initial; } }
+
+@media (min-width: 570px) {
+  .InfoWrapper {
+    max-width: 370px;
+    width: initial; } }
 
 .InfoWrapper-descWrapper {
   max-height: 1000px;
   opacity: 1;
   transition: all 0.5s linear;
   overflow: hidden; }
-  .InfoWrapper-descWrapper.is-invisible {
-    opacity: 0;
-    max-height: 0; }
+
+.InfoWrapper-descWrapper.is-invisible {
+  opacity: 0;
+  max-height: 0; }
 
 .InfoWrapper-desc {
   margin-top: 1em; }
@@ -33,11 +36,13 @@
 
 .InfoWrapper-icon--arrow {
   transition: transform 0.3s ease-in; }
-  .InfoWrapper-icon--arrow.is-toggled {
-    bottom: 0.7em;
-    transform: rotate(180deg); }
+
+.InfoWrapper-icon--arrow.is-toggled {
+  bottom: 0.7em;
+  transform: rotate(180deg); }
 
 .InfoWrapper-icon--underline {
   transition: bottom 0.3s ease-in; }
-  .InfoWrapper-icon--underline.is-toggled {
-    bottom: 0.35em; }
+
+.InfoWrapper-icon--underline.is-toggled {
+  bottom: 0.35em; }

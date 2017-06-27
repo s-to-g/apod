@@ -1,3 +1,6 @@
+@import 'node_modules/reset-css/_reset.scss';
+@import './vars.scss';
+
 /* roboto-300 - latin */
 @font-face {
   font-family: 'Roboto';
@@ -16,9 +19,6 @@
        url('../../fonts/roboto-v16-latin-regular.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
        url('../../fonts/roboto-v16-latin-regular.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
 }
-
-@import 'node_modules/reset-css/_reset.scss';
-@import './vars.scss';
 
 html {
   box-sizing: border-box;
@@ -44,7 +44,6 @@ ul {
 }
 
 h2 {
-  font-size: 1.4em;
   font-weight: 400;
   line-height: 140%;
 }
