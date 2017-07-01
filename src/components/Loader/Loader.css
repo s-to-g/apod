@@ -18,7 +18,7 @@
 
 .loader__block {
   flex-basis: 14%;
-  background-color: #1abc9c;
+  background-color: #00E8FF;
   animation: pulse 1.2s infinite ease-in-out; }
   .loader__block:nth-of-type(1) {
     animation-delay: -1.2s; }

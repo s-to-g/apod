@@ -4,9 +4,10 @@
   color: inherit;
   display: inline-block;
   padding: 1em 2em;
+  margin-bottom: 1em;
   margin-left: auto;
   letter-spacing: 0.7px;
-  opacity: 0.8;
+  opacity: 0.9;
   text-decoration: none;
   text-align: center;
   text-transform: uppercase;
@@ -15,6 +16,7 @@
 
 @media (min-width: 570px) {
   .Button {
+    order: 2;
     width: initial; }
   .Button:hover {
     background-color: #00c3d6; } }

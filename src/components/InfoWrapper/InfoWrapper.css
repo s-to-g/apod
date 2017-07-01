@@ -1,7 +1,6 @@
 .InfoWrapper {
   background-color: #000000;
   border-radius: 4px;
-  margin: 0 0 2em;
   padding: 1em 2em;
   position: relative;
   opacity: 0.8;
@@ -9,6 +8,7 @@
 
 @media (min-width: 570px) {
   .InfoWrapper {
+    order: 1;
     max-width: 370px;
     width: initial; } }
 

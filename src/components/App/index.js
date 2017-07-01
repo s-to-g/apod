@@ -76,9 +76,8 @@ class App extends React.Component {
         return result.json();
       })
       .then(result => this.initAstronomicalResult(result))
-      // handle network error
+      // what should happen on network error?
       .catch(error => console.log("error"));
-      // WHAT SHOULD HAPPEN ON NETWORK ERROR???????????????
   }
 
   componentDidMount() {

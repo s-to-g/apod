@@ -14,10 +14,10 @@ class AstronomicalPic extends React.Component {
     };
     return (
       <section className={componentClasses.join(' ')} style={sectionStyle} >
-        <InfoWrapper result={result} bgImg={bgImg} />
         <Button onClick={onClick}>
           explore
         </Button>
+        <InfoWrapper result={result} bgImg={bgImg} />
       </section>
     )
   }

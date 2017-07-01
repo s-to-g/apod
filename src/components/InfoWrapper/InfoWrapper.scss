@@ -4,12 +4,12 @@
 .InfoWrapper {
   background-color: $black;
   border-radius: 4px;
-  margin: 0 0 2em;
   padding: 1em 2em;
   position: relative;
   opacity: 0.8;
   width: 100%;
   @include breakpoint(small) {
+    order: 1;
     max-width: 370px;
     width: initial;
   };
