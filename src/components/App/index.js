@@ -86,7 +86,7 @@ class App extends React.Component {
 
   render() {
     const { result, isLoading, bgImg } = this.state;
-    if (!result) { return null; }
+    if (!result) { return <Loader />; }
     return (
       <div>
         <AstronomyPic
